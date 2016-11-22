@@ -28,8 +28,8 @@
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
-    // Do any additional setup after loading the view from its nib.
 }
+
 -(void)buttonClick:(id)sender{
     [ServiceManager loadService:@"P2Service" withParams:@{@"NUMBER":@(self.field.text.floatValue)} withCallBack:^(NSDictionary *result){
         if (result) {
@@ -37,6 +37,14 @@
         }
     } synchronous:NO];
 }
+- (IBAction)modeAClicked:(id)sender {
+}
+- (IBAction)modeBClicked:(id)sender {
+}
+- (IBAction)modeCClicked:(id)sender {
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

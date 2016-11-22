@@ -8,10 +8,12 @@
 
 #import "AppDelegate.h"
 #import "PublicContext.h"
+#import "ZCTabBarController.h"
+#import "ZCConfigViewController.h"
 #import "p1.h"
 #import "p2.h"
-@interface AppDelegate ()
-
+@interface AppDelegate ()<UITabBarControllerDelegate>
+@property (nonatomic, strong) P1ViewController *vc;
 @end
 
 @implementation AppDelegate
@@ -19,19 +21,66 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    P1ViewController *vc=[[P1ViewController alloc]init];
-   P2ViewController *vc2=[[P2ViewController alloc]init];
-    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+    _vc=[[P1ViewController alloc]init];
+    P2ViewController *vc2=[[P2ViewController alloc]init];
+    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:_vc];
     UINavigationController *nav2=[[UINavigationController alloc]initWithRootViewController:vc2];
     [nav setTabBarItem:[[UITabBarItem alloc]initWithTitle:@"第一页" image:nil selectedImage:nil]];
-   [nav2 setTabBarItem:[[UITabBarItem alloc]initWithTitle:@"第二页" image:nil selectedImage:nil]];
-    UITabBarController *tab=[[UITabBarController alloc]init];
+    [nav2 setTabBarItem:[[UITabBarItem alloc]initWithTitle:@"第二页" image:nil selectedImage:nil]];
+    ZCTabBarController *tab=[[ZCTabBarController alloc]init];
+    tab.delegate = self;
     [tab setViewControllers:@[nav,nav2]];
     [[NavigationManager manager] configWithTabBarController:tab];
     self.window=[[UIWindow alloc]init];
     self.window.rootViewController=tab;
     [self.window makeKeyAndVisible];
+    
+    UIButton *btn = [[UIButton alloc] init];
+    btn.frame = CGRectMake(0, 0, 50, 50);
+    btn.backgroundColor = [UIColor orangeColor];
+    [btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *btnItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    _vc.navigationItem.rightBarButtonItem = btnItem;
+    
     return YES;
+}
+
+
+- (void)mode1
+{
+    P2ViewController *vc2=[[P2ViewController alloc]init];
+    UINavigationController *nav2=[[UINavigationController alloc]initWithRootViewController:vc2];
+    [nav2 setTabBarItem:[[UITabBarItem alloc]initWithTitle:@"第二页" image:nil selectedImage:nil]];
+    ZCTabBarController *tab=[[ZCTabBarController alloc]init];
+    tab.delegate = self;
+    [tab setViewControllers:@[_vc.navigationController,nav2]];
+    [[NavigationManager manager] configWithTabBarController:tab];
+    self.window=[[UIWindow alloc]init];
+    self.window.rootViewController=tab;
+    [self.window makeKeyAndVisible];
+}
+
+-(void)mode2
+{
+    ZCTabBarController *tab=[[ZCTabBarController alloc]init];
+    tab.delegate = self;
+    [tab setViewControllers:@[_vc.navigationController]];
+    [[NavigationManager manager] configWithTabBarController:tab];
+    self.window=[[UIWindow alloc]init];
+    self.window.rootViewController=tab;
+    [self.window makeKeyAndVisible];
+}
+
+- (void)btnClicked:(UIButton *)btn
+{
+    ZCConfigViewController *configVC = [[ZCConfigViewController alloc] init];
+    [_vc.navigationController pushViewController:configVC animated:YES];
+}
+
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
