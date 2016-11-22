@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7A2D33071DE44ABA000EE7BF /* ZCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D33061DE44ABA000EE7BF /* ZCTabBarController.m */; };
 		7A2D330A1DE44B45000EE7BF /* ZCConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D33091DE44B45000EE7BF /* ZCConfigViewController.m */; };
+		7A2D33DD1DE45E29000EE7BF /* P3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2D33DC1DE45E29000EE7BF /* P3.framework */; };
 		ADC889A01D61DDEC00B32B1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC8899F1D61DDEC00B32B1A /* main.m */; };
 		ADC889A31D61DDEC00B32B1A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC889A21D61DDEC00B32B1A /* AppDelegate.m */; };
 		ADC889A61D61DDEC00B32B1A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC889A51D61DDEC00B32B1A /* ViewController.m */; };
@@ -25,6 +26,7 @@
 		7A2D33061DE44ABA000EE7BF /* ZCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTabBarController.m; sourceTree = "<group>"; };
 		7A2D33081DE44B45000EE7BF /* ZCConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCConfigViewController.h; sourceTree = "<group>"; };
 		7A2D33091DE44B45000EE7BF /* ZCConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCConfigViewController.m; sourceTree = "<group>"; };
+		7A2D33DC1DE45E29000EE7BF /* P3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = P3.framework; path = "../../../Library/Developer/Xcode/DerivedData/MultiProject-dcgqihaleimqwmadflrsatejicvc/Build/Products/Debug-iphoneos/P3.framework"; sourceTree = "<group>"; };
 		ADC8899B1D61DDEC00B32B1A /* MainProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC8899F1D61DDEC00B32B1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ADC889A11D61DDEC00B32B1A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A2D33DD1DE45E29000EE7BF /* P3.framework in Frameworks */,
 				ADEF7B741D62FBDD007636D6 /* P2.framework in Frameworks */,
 				ADEF7B721D62FBDA007636D6 /* PublicContext.framework in Frameworks */,
 				ADEF7B701D62FBD4007636D6 /* P1.framework in Frameworks */,
@@ -57,6 +60,7 @@
 		ADC889921D61DDEC00B32B1A = {
 			isa = PBXGroup;
 			children = (
+				7A2D33DC1DE45E29000EE7BF /* P3.framework */,
 				7A2D33051DE44ABA000EE7BF /* ZCTabBarController.h */,
 				7A2D33061DE44ABA000EE7BF /* ZCTabBarController.m */,
 				ADEF7B6F1D62FBD4007636D6 /* P1.framework */,

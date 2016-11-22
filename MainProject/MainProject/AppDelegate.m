@@ -12,8 +12,16 @@
 #import "ZCConfigViewController.h"
 #import "p1.h"
 #import "p2.h"
+#import "p3.h"
 @interface AppDelegate ()<UITabBarControllerDelegate>
+@property (nonatomic, strong) UINavigationController *nav;
+@property (nonatomic, strong) UINavigationController *nav2;
+@property (nonatomic, strong) UINavigationController *nav3;
+
 @property (nonatomic, strong) P1ViewController *vc;
+@property (nonatomic, strong) P2ViewController *vc2;
+@property (nonatomic, strong) P3ViewController *vc3;
+@property (nonatomic, strong) ZCTabBarController *tab;
 @end
 
 @implementation AppDelegate
@@ -22,17 +30,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     _vc=[[P1ViewController alloc]init];
-    P2ViewController *vc2=[[P2ViewController alloc]init];
-    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:_vc];
-    UINavigationController *nav2=[[UINavigationController alloc]initWithRootViewController:vc2];
-    [nav setTabBarItem:[[UITabBarItem alloc]initWithTitle:@"第一页" image:nil selectedImage:nil]];
-    [nav2 setTabBarItem:[[UITabBarItem alloc]initWithTitle:@"第二页" image:nil selectedImage:nil]];
-    ZCTabBarController *tab=[[ZCTabBarController alloc]init];
-    tab.delegate = self;
-    [tab setViewControllers:@[nav,nav2]];
-    [[NavigationManager manager] configWithTabBarController:tab];
+    _vc2=[[P2ViewController alloc]init];
+    _vc3 =[[P3ViewController alloc]init];
+
+    _nav=[[UINavigationController alloc]initWithRootViewController:_vc];
+    _nav2=[[UINavigationController alloc]initWithRootViewController:_vc2];
+    _nav3=[[UINavigationController alloc]initWithRootViewController:_vc3];
+    [_nav setTabBarItem:[[UITabBarItem alloc]initWithTitle:@"第一页" image:nil selectedImage:nil]];
+    [_nav2 setTabBarItem:[[UITabBarItem alloc]initWithTitle:@"第二页" image:nil selectedImage:nil]];
+    [_nav3 setTabBarItem:[[UITabBarItem alloc]initWithTitle:@"第三页" image:nil selectedImage:nil]];
+    _tab=[[ZCTabBarController alloc]init];
+    _tab.delegate = self;
+    [_tab setViewControllers:@[_nav,_nav2,_nav3]];
+    [[NavigationManager manager] configWithTabBarController:_tab];
     self.window=[[UIWindow alloc]init];
-    self.window.rootViewController=tab;
+    self.window.rootViewController=_tab;
     [self.window makeKeyAndVisible];
     
     UIButton *btn = [[UIButton alloc] init];
@@ -48,26 +60,33 @@
 
 - (void)mode1
 {
-    P2ViewController *vc2=[[P2ViewController alloc]init];
-    UINavigationController *nav2=[[UINavigationController alloc]initWithRootViewController:vc2];
-    [nav2 setTabBarItem:[[UITabBarItem alloc]initWithTitle:@"第二页" image:nil selectedImage:nil]];
-    ZCTabBarController *tab=[[ZCTabBarController alloc]init];
-    tab.delegate = self;
-    [tab setViewControllers:@[_vc.navigationController,nav2]];
-    [[NavigationManager manager] configWithTabBarController:tab];
-    self.window=[[UIWindow alloc]init];
-    self.window.rootViewController=tab;
+    [_tab setViewControllers:@[_nav,_nav2,_nav3]];
+    [[NavigationManager manager] configWithTabBarController:_tab];
+    self.window.rootViewController=_tab;
     [self.window makeKeyAndVisible];
 }
 
 -(void)mode2
 {
-    ZCTabBarController *tab=[[ZCTabBarController alloc]init];
-    tab.delegate = self;
-    [tab setViewControllers:@[_vc.navigationController]];
-    [[NavigationManager manager] configWithTabBarController:tab];
-    self.window=[[UIWindow alloc]init];
-    self.window.rootViewController=tab;
+    [_tab setViewControllers:@[_nav]];
+    [[NavigationManager manager] configWithTabBarController:_tab];
+    self.window.rootViewController=_tab;
+    [self.window makeKeyAndVisible];
+}
+
+-(void)mode3
+{
+    [_tab setViewControllers:@[_nav,_nav3]];
+    [[NavigationManager manager] configWithTabBarController:_tab];
+    self.window.rootViewController=_tab;
+    [self.window makeKeyAndVisible];
+}
+
+-(void)mode4
+{
+    [_tab setViewControllers:@[_nav,_nav2]];
+    [[NavigationManager manager] configWithTabBarController:_tab];
+    self.window.rootViewController=_tab;
     [self.window makeKeyAndVisible];
 }
 
