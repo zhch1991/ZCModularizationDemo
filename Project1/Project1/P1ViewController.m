@@ -21,7 +21,7 @@
     [self.field setPlaceholder:@"输入一个数字"];
     [self.view addSubview:self.field];
     [self.view setBackgroundColor:[UIColor greenColor]];
-    UIButton *button=[UIButton buttonWitCZpe:UIButtonTypeCustom];
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(50, 320, 200, 50)];
     button.backgroundColor=[UIColor whiteColor];
     [button setTitle:@"getServiceFromP2" forState:UIControlStateNormal];

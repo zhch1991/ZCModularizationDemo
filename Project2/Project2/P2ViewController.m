@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor redColor]];
-    UIButton *button=[UIButton buttonWitCZpe:UIButtonTypeCustom];
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(50, 320, 100, 100)];
     button.backgroundColor=[UIColor whiteColor];
     [button setTitle:@"pushtoP1" forState:UIControlStateNormal];
